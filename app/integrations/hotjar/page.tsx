@@ -20,28 +20,46 @@ export default function HotjarPage() {
         </p>
       </div>
 
+      {/* Status */}
+      <div className="bg-green-50 border border-green-200 rounded-lg p-4 flex items-center gap-3">
+        <span className="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+          <span className="text-green-600 text-lg">✓</span>
+        </span>
+        <div>
+          <h3 className="font-medium text-green-900">Tracking Installed</h3>
+          <p className="text-sm text-green-700">
+            ContentSquare (Hotjar) tracking is active on this site.
+          </p>
+        </div>
+      </div>
+
       {/* Setup Instructions */}
       <div className="bg-white border border-gray-200 rounded-lg p-6 space-y-4">
-        <h2 className="text-lg font-semibold text-gray-900">Setup Steps</h2>
+        <h2 className="text-lg font-semibold text-gray-900">Remaining Setup Steps</h2>
 
         <div className="space-y-4">
+          <div className="flex gap-3">
+            <span className="flex-shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center text-sm font-medium text-green-600">
+              ✓
+            </span>
+            <div>
+              <h3 className="font-medium text-gray-400 line-through">Install tracking code</h3>
+              <p className="text-sm text-gray-400">
+                ContentSquare tracking is already installed on this site.
+              </p>
+            </div>
+          </div>
+
           <div className="flex gap-3">
             <span className="flex-shrink-0 w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center text-sm font-medium text-gray-600">
               1
             </span>
             <div>
-              <h3 className="font-medium text-gray-900">Create a Hotjar account</h3>
+              <h3 className="font-medium text-gray-900">Create a Survey</h3>
               <p className="text-sm text-gray-600">
-                Sign up at{" "}
-                <a
-                  href="https://www.hotjar.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:underline"
-                >
-                  hotjar.com
-                </a>
-                . The free tier includes surveys.
+                In your Hotjar/ContentSquare dashboard, go to Surveys → Create Survey.
+                Include at least one text question for the insight body. NPS or rating
+                questions are also supported.
               </p>
             </div>
           </div>
@@ -49,53 +67,6 @@ export default function HotjarPage() {
           <div className="flex gap-3">
             <span className="flex-shrink-0 w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center text-sm font-medium text-gray-600">
               2
-            </span>
-            <div>
-              <h3 className="font-medium text-gray-900">Add this site to Hotjar</h3>
-              <p className="text-sm text-gray-600">
-                In Hotjar, go to Organization Settings → Sites & Organizations →
-                Add new site. Enter this sandbox URL.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center text-sm font-medium text-gray-600">
-              3
-            </span>
-            <div>
-              <h3 className="font-medium text-gray-900">Install the Hotjar tracking code</h3>
-              <p className="text-sm text-gray-600">
-                Copy the tracking code and add it to the{" "}
-                <code className="text-xs bg-gray-100 px-1 py-0.5 rounded">
-                  app/layout.tsx
-                </code>{" "}
-                file in this repo, or use the environment variable below.
-              </p>
-              <div className="mt-2 bg-gray-50 border border-gray-200 rounded p-3">
-                <code className="text-xs text-gray-700">
-                  NEXT_PUBLIC_HOTJAR_ID=your_hotjar_site_id
-                </code>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center text-sm font-medium text-gray-600">
-              4
-            </span>
-            <div>
-              <h3 className="font-medium text-gray-900">Create a Survey</h3>
-              <p className="text-sm text-gray-600">
-                Go to Surveys → Create Survey. Include at least one text question
-                for the insight body. NPS or rating questions are also supported.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex gap-3">
-            <span className="flex-shrink-0 w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center text-sm font-medium text-gray-600">
-              5
             </span>
             <div>
               <h3 className="font-medium text-gray-900">Configure the Webhook</h3>
@@ -111,13 +82,16 @@ export default function HotjarPage() {
 
           <div className="flex gap-3">
             <span className="flex-shrink-0 w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center text-sm font-medium text-gray-600">
-              6
+              3
             </span>
             <div>
               <h3 className="font-medium text-gray-900">Target this page</h3>
               <p className="text-sm text-gray-600">
-                Set your survey to appear on this URL. The survey should pop up
-                when you visit this page.
+                Set your survey to appear on URLs containing{" "}
+                <code className="text-xs bg-gray-100 px-1 py-0.5 rounded">
+                  /integrations/hotjar
+                </code>
+                . The survey should pop up when you visit this page.
               </p>
             </div>
           </div>
