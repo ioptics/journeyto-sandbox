@@ -17,12 +17,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <head>
         {/* Hotjar / ContentSquare tracking */}
         <Script
           src="https://t.contentsquare.net/uxa/078730f0e7fa2.js"
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
         />
+      </head>
+      <body className={inter.className}>
         <div className="min-h-screen bg-gray-50">
           <header className="bg-white border-b border-gray-200">
             <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
