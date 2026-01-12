@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotjar Integration | JourneyTo Sandbox</title>
+  <link rel="stylesheet" href="../styles.css">
+  <script src="https://t.contentsquare.net/uxa/078730f0e7fa2.js" async></script>
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="/" class="header-title">JourneyTo Sandbox</a>
+      <a href="https://github.com/ioptics/journeyto-sandbox" target="_blank" rel="noopener noreferrer" class="header-link">GitHub</a>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="section">
+      <a href="/" class="back-link">&larr; Back to integrations</a>
+      <h1>Hotjar Integration</h1>
+      <p class="mt-2">Test Hotjar survey responses flowing into JourneyTo as insights.</p>
+    </div>
+
+    <div class="section">
+      <div class="alert alert-success">
+        <span class="alert-success-icon">&#10003;</span>
+        <div>
+          <h3>Tracking Installed</h3>
+          <p>ContentSquare (Hotjar) tracking is active on this site.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="card">
+        <h2>Remaining Setup Steps</h2>
+        <div class="steps">
+          <div class="step">
+            <span class="step-number done">&#10003;</span>
+            <div class="step-content">
+              <h3 class="done">Install tracking code</h3>
+              <p class="done text-sm">ContentSquare tracking is already installed on this site.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <span class="step-number">1</span>
+            <div class="step-content">
+              <h3>Create a Survey</h3>
+              <p class="text-sm">
+                In your Hotjar/ContentSquare dashboard, go to Surveys &rarr; Create Survey.
+                Include at least one text question for the insight body. NPS or rating
+                questions are also supported.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <span class="step-number">2</span>
+            <div class="step-content">
+              <h3>Configure the Webhook</h3>
+              <p class="text-sm">
+                In your survey settings, go to Integrations &rarr; Webhooks &rarr; Add endpoint.
+                Enter your JourneyTo webhook URL:
+              </p>
+              <div class="code-block mt-2" style="font-size: 0.75rem;">
+                https://your-journeyto.vercel.app/api/webhooks/insights?token=YOUR_TOKEN
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <span class="step-number">3</span>
+            <div class="step-content">
+              <h3>Target this page</h3>
+              <p class="text-sm">
+                Set your survey to appear on URLs containing
+                <code class="code-inline">/integrations/hotjar</code>.
+                The survey should pop up when you visit this page.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="card">
+        <h2>Test Area</h2>
+        <p class="text-sm mb-4">
+          Once configured, the Hotjar survey should appear on this page (usually
+          as a widget in the corner or as a popup).
+        </p>
+        <div class="test-placeholder">
+          <p>Hotjar survey will appear here or as an overlay</p>
+          <p class="hint">Make sure you've completed the setup steps above</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="card">
+        <h2>What to Expect in JourneyTo</h2>
+        <p class="text-sm mb-4">
+          When a survey response is submitted, JourneyTo will create an insight with:
+        </p>
+        <ul class="check-list">
+          <li><span class="check">&#10003;</span> <span><strong>Body:</strong> Text answers from the survey (Q&A format)</span></li>
+          <li><span class="check">&#10003;</span> <span><strong>Source:</strong> "hotjar"</span></li>
+          <li><span class="check">&#10003;</span> <span><strong>Rating:</strong> Derived from NPS (0-10 &rarr; 1-5) or direct rating questions</span></li>
+          <li><span class="check">&#10003;</span> <span><strong>Sentiment:</strong> Derived from NPS (promoter/passive/detractor)</span></li>
+          <li><span class="check">&#10003;</span> <span><strong>Metadata:</strong> Survey name, device, browser, location, recording URL</span></li>
+        </ul>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

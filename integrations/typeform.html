@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typeform Integration | JourneyTo Sandbox</title>
+  <link rel="stylesheet" href="../styles.css">
+  <script src="https://t.contentsquare.net/uxa/078730f0e7fa2.js" async></script>
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="/" class="header-title">JourneyTo Sandbox</a>
+      <a href="https://github.com/ioptics/journeyto-sandbox" target="_blank" rel="noopener noreferrer" class="header-link">GitHub</a>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="section">
+      <a href="/" class="back-link">&larr; Back to integrations</a>
+      <h1>Typeform Integration</h1>
+      <p class="mt-2">Test Typeform responses flowing into JourneyTo as insights.</p>
+    </div>
+
+    <div class="section">
+      <div class="card">
+        <h2>Setup Steps</h2>
+        <div class="steps">
+          <div class="step">
+            <span class="step-number">1</span>
+            <div class="step-content">
+              <h3>Create a Typeform account</h3>
+              <p class="text-sm">
+                Sign up at <a href="https://www.typeform.com" target="_blank" rel="noopener noreferrer" style="color: #2563eb;">typeform.com</a>.
+                The free tier allows up to 10 responses/month.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <span class="step-number">2</span>
+            <div class="step-content">
+              <h3>Create a Form</h3>
+              <p class="text-sm">
+                Create a new form with at least one text question. You can also add
+                NPS, rating, or email questions.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <span class="step-number">3</span>
+            <div class="step-content">
+              <h3>Configure the Webhook</h3>
+              <p class="text-sm">
+                Go to Connect &rarr; Webhooks &rarr; Add webhook. Enter your JourneyTo webhook URL:
+              </p>
+              <div class="code-block mt-2" style="font-size: 0.75rem;">
+                https://your-journeyto.vercel.app/api/webhooks/insights?token=YOUR_TOKEN
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <span class="step-number">4</span>
+            <div class="step-content">
+              <h3>Get the Embed Code or Form ID</h3>
+              <p class="text-sm">
+                Go to Share &rarr; Embed in a web page. Copy the form ID from the embed
+                code (looks like <code class="code-inline">abc123xyz</code>).
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <span class="step-number">5</span>
+            <div class="step-content">
+              <h3>Embed your form below</h3>
+              <p class="text-sm">
+                Replace the placeholder in the Test Form section with your Typeform embed code.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="card">
+        <h2>Test Form</h2>
+        <p class="text-sm mb-4">
+          Once configured, your Typeform will be embedded below. Submit a response to test the webhook.
+        </p>
+        <div class="test-placeholder">
+          <p>Typeform embed will appear here</p>
+          <p class="hint">Replace this placeholder with your Typeform embed code</p>
+        </div>
+        <p class="text-xs text-gray-500 mt-4">To embed manually, replace the placeholder above with:</p>
+        <pre class="code-light mt-2">&lt;div data-tf-live="YOUR_FORM_ID"&gt;&lt;/div&gt;
+&lt;script src="//embed.typeform.com/next/embed.js"&gt;&lt;/script&gt;</pre>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="alert alert-info" style="padding: 1.5rem;">
+        <h2>Pro Tip: Hidden Fields</h2>
+        <p class="mb-4">Typeform supports hidden fields that can pass user data to JourneyTo:</p>
+        <ul style="list-style: none; margin-bottom: 1rem;">
+          <li class="mb-2">&bull; <code>email</code> - User's email</li>
+          <li class="mb-2">&bull; <code>user_id</code> - Your internal user ID</li>
+          <li class="mb-2">&bull; <code>company_id</code> - Account/company ID</li>
+        </ul>
+        <p>Add these as hidden fields in Typeform, then pass them in the embed URL:</p>
+        <code style="display: block; margin-top: 0.5rem; background: #dbeafe; padding: 0.5rem; border-radius: 0.25rem; font-size: 0.75rem;">
+          ?email=user@example.com&amp;user_id=123&amp;company_id=456
+        </code>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="card">
+        <h2>What to Expect in JourneyTo</h2>
+        <p class="text-sm mb-4">
+          When a form is submitted, JourneyTo will create an insight with:
+        </p>
+        <ul class="check-list">
+          <li><span class="check">&#10003;</span> <span><strong>Body:</strong> Text answers formatted as question/answer pairs</span></li>
+          <li><span class="check">&#10003;</span> <span><strong>Source:</strong> "typeform"</span></li>
+          <li><span class="check">&#10003;</span> <span><strong>Rating:</strong> From rating or NPS questions (0-10 &rarr; 1-5)</span></li>
+          <li><span class="check">&#10003;</span> <span><strong>User Email:</strong> From email question or hidden field</span></li>
+          <li><span class="check">&#10003;</span> <span><strong>Metadata:</strong> Form ID, form title, NPS raw score</span></li>
+        </ul>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

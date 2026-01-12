@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tally Integration | JourneyTo Sandbox</title>
+  <link rel="stylesheet" href="../styles.css">
+  <script src="https://t.contentsquare.net/uxa/078730f0e7fa2.js" async></script>
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="/" class="header-title">JourneyTo Sandbox</a>
+      <a href="https://github.com/ioptics/journeyto-sandbox" target="_blank" rel="noopener noreferrer" class="header-link">GitHub</a>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="section">
+      <a href="/" class="back-link">&larr; Back to integrations</a>
+      <h1>Tally Integration</h1>
+      <p class="mt-2">Test Tally form submissions flowing into JourneyTo as insights.</p>
+    </div>
+
+    <div class="section">
+      <div class="card">
+        <h2>Setup Steps</h2>
+        <div class="steps">
+          <div class="step">
+            <span class="step-number">1</span>
+            <div class="step-content">
+              <h3>Create a Tally account</h3>
+              <p class="text-sm">
+                Sign up at <a href="https://tally.so" target="_blank" rel="noopener noreferrer" style="color: #2563eb;">tally.so</a>.
+                Tally has a generous free tier with unlimited forms and responses.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <span class="step-number">2</span>
+            <div class="step-content">
+              <h3>Create a Form</h3>
+              <p class="text-sm">
+                Create a new form with at least one text input. You can also add
+                rating, NPS, or email fields.
+              </p>
+              <p class="text-xs text-gray-500 mt-1">
+                Supported field types: Long Text, Short Text, Email, Rating, NPS, Linear Scale
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <span class="step-number">3</span>
+            <div class="step-content">
+              <h3>Configure the Webhook</h3>
+              <p class="text-sm">
+                In your form settings, go to Integrations &rarr; Webhooks &rarr; Add webhook.
+                Enter your JourneyTo webhook URL:
+              </p>
+              <div class="code-block mt-2" style="font-size: 0.75rem;">
+                https://your-journeyto.vercel.app/api/webhooks/insights?token=YOUR_TOKEN
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <span class="step-number">4</span>
+            <div class="step-content">
+              <h3>Get the Form ID</h3>
+              <p class="text-sm">Find your form ID in the URL when editing:</p>
+              <code style="display: block; margin-top: 0.5rem; background: #f9fafb; border: 1px solid #e5e7eb; padding: 0.5rem; border-radius: 0.25rem; font-size: 0.75rem;">
+                https://tally.so/forms/<span style="color: #2563eb; font-weight: 600;">abc123</span>/edit
+              </code>
+            </div>
+          </div>
+
+          <div class="step">
+            <span class="step-number">5</span>
+            <div class="step-content">
+              <h3>Embed your form below</h3>
+              <p class="text-sm">
+                Replace the placeholder in the Test Form section with your Tally embed code.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="card">
+        <h2>Test Form</h2>
+        <p class="text-sm mb-4">
+          Once configured, your Tally form will be embedded below. Submit a response to test the webhook.
+        </p>
+        <div class="test-placeholder">
+          <p>Tally form embed will appear here</p>
+          <p class="hint">Replace this placeholder with your Tally embed code</p>
+        </div>
+        <p class="text-xs text-gray-500 mt-4">To embed manually, replace the placeholder above with:</p>
+        <pre class="code-light mt-2">&lt;iframe
+  src="https://tally.so/embed/YOUR_FORM_ID?alignLeft=1&amp;hideTitle=1"
+  width="100%"
+  height="500"
+  frameborder="0"
+  title="Tally Form"
+&gt;&lt;/iframe&gt;</pre>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="alert alert-green" style="padding: 1.5rem;">
+        <h2>Why Tally is Great for Testing</h2>
+        <ul class="check-list" style="margin-top: 0.5rem;">
+          <li><span class="check">&#10003;</span> <span><strong>Unlimited free responses</strong> - no monthly limits</span></li>
+          <li><span class="check">&#10003;</span> <span><strong>Simple webhook setup</strong> - built-in integration</span></li>
+          <li><span class="check">&#10003;</span> <span><strong>Clean payload format</strong> - easy to debug</span></li>
+          <li><span class="check">&#10003;</span> <span><strong>Instant webhook delivery</strong> - no delays</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="card">
+        <h2>What to Expect in JourneyTo</h2>
+        <p class="text-sm mb-4">
+          When a form is submitted, JourneyTo will create an insight with:
+        </p>
+        <ul class="check-list">
+          <li><span class="check">&#10003;</span> <span><strong>Body:</strong> Text answers formatted as label/value pairs</span></li>
+          <li><span class="check">&#10003;</span> <span><strong>Source:</strong> "tally"</span></li>
+          <li><span class="check">&#10003;</span> <span><strong>Rating:</strong> From rating/NPS/linear scale fields (mapped to 1-5)</span></li>
+          <li><span class="check">&#10003;</span> <span><strong>Sentiment:</strong> Derived from NPS (promoter/passive/detractor)</span></li>
+          <li><span class="check">&#10003;</span> <span><strong>User Email:</strong> From email field if present</span></li>
+          <li><span class="check">&#10003;</span> <span><strong>Metadata:</strong> Form ID, form name, NPS raw score</span></li>
+        </ul>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
